@@ -4,100 +4,169 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Få klart svar</title>
+
   <style>
+    :root {
+      --bg: #f6f7f8;
+      --card: #ffffff;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border: #e5e7eb;
+      --green: #1f9d55;
+      --green-hover: #17803f;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+    }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f6f7;
-      color: #1f2933;
       margin: 0;
-      padding: 0;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 40px 16px;
     }
+
     .container {
-      max-width: 720px;
-      margin: 80px auto;
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      max-width: 820px;
+      margin: 0 auto;
     }
+
+    .card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
     h1 {
       margin-top: 0;
       font-size: 28px;
+      letter-spacing: -0.02em;
     }
+
     p {
+      font-size: 16px;
       line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
+
+    .textarea-wrapper {
+      margin-top: 20px;
+    }
+
     textarea {
       width: 100%;
-      height: 180px;
-      padding: 12px;
+      min-height: 220px;
+      padding: 14px;
       font-size: 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
       resize: vertical;
-      margin-top: 12px;
     }
-    button {
-      margin-top: 16px;
-      padding: 10px 18px;
-      font-size: 15px;
+
+    textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-help {
+      background-color: var(--green);
+      color: #ffffff;
       border: none;
-      border-radius: 6px;
-      background: #111827;
-      color: white;
+      padding: 12px 26px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
-    button:hover {
-      background: #000;
+
+    .btn-help:hover {
+      background-color: var(--green-hover);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
-    .example {
-      margin-top: 32px;
-      padding: 16px;
-      background: #f9fafb;
-      border-left: 4px solid #9ca3af;
-      font-size: 14px;
-    }
-    .footer {
-      margin-top: 24px;
+
+    .note {
       font-size: 13px;
       color: #6b7280;
+      margin-top: 20px;
+    }
+
+    .example {
+      margin-top: 28px;
+      padding-left: 16px;
+      border-left: 4px solid var(--border);
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .example strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #9ca3af;
     }
   </style>
 </head>
+
 <body>
-
   <div class="container">
-    <h1>Få klart svar</h1>
+    <div class="card">
+      <h1>Få klart svar</h1>
 
-    <p>
-      Lim inn et brev, vedtak eller krav fra en offentlig instans.
-      Du får en tydelig forklaring på hva det betyr for deg, og hvilke muligheter du har videre.
-    </p>
+      <p>
+        Lim inn et brev, vedtak eller krav fra en offentlig instans.
+        Du får en tydelig forklaring på hva det betyr for deg,
+        og hvilke muligheter du har videre.
+      </p>
 
-    <p>
-      Eksempler på avsendere:
-      NAV, Skatteetaten, kommunale etater, Helfo, Statens innkrevingssentral og helsevesenet.
-    </p>
+      <p>
+        Eksempler på avsendere:
+        NAV, Skatteetaten, kommunale etater, Helfo,
+        Statens innkrevingssentral og helsevesenet.
+      </p>
 
-    <textarea placeholder="Lim inn teksten fra brevet her …"></textarea>
+      <div class="textarea-wrapper">
+        <textarea placeholder="Lim inn teksten fra brevet her …"></textarea>
+      </div>
 
-    <button>Få hjelp</button>
+      <div class="actions">
+        <button class="btn-help">Få hjelp</button>
+      </div>
 
-    <div class="example">
-      <strong>Eksempel:</strong><br><br>
-      <em>
+      <div class="note">
+        Dette er en tidlig versjon. Ingen data lagres.
+      </div>
+
+      <div class="example">
+        <strong>Eksempel:</strong>
         «NAV har avslått søknaden din om arbeidsavklaringspenger.
-        Avslaget er begrunnet med at vilkårene i folketrygdloven § 11-5 ikke anses oppfylt…»
-      </em>
-      <br><br>
-      Tjenesten vil forklare hva avslaget betyr, hvorfor det er gitt,
-      og hvilke muligheter du har for å klage eller gå videre.
+        Avslaget er begrunnet med at vilkårene i folketrygdloven § 11-5
+        ikke anses oppfylt.»
+        <br/><br/>
+        Tjenesten forklarer hva avslaget betyr, hvorfor det er gitt,
+        og hvilke muligheter du har for å klage eller gå videre.
+      </div>
     </div>
 
-    <div class="footer">
-      Dette er en tidlig versjon av tjenesten. Ingen innsendt tekst lagres eller deles.
-    </div>
+    <footer>
+      faklartsvar.no – uavhengig veiledning
+    </footer>
   </div>
-
 </body>
 </html>
